@@ -34,7 +34,8 @@ int main(int argc, char* argv[]) {
         auto [header, proto] = deserializer.Parse();
 
         PrintHeader(header);
-        PrintPrototype(proto);    }
+        PrintPrototype(proto);    
+    }
     catch (const std::exception& e) {
         std::cerr << "Error: " << e.what() << std::endl;
         return 1;
