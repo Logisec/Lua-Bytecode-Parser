@@ -7,8 +7,7 @@
 *              Might make the descriptions more descriptive in the future. :wink:
 *
 */
-#ifndef ENUMS_HEADER
-#define ENUMS_HEADER
+#pragma once
 
 struct InstructionInfo {
     const char* Mnemonic;
@@ -57,5 +56,3 @@ constexpr InstructionInfo InstructionSet[] = {
     {"VARARG", "iABC", "R(A), R(A+1), ..., R(A+B-1) := vararg"},
     {"INVALID", "", "Invalid opcode or undefined behavior"}
 };
-
-#endif // !ENUMS_HEADER

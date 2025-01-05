@@ -6,8 +6,7 @@
 * Description: Handles definitions for structs and methods for the deserializer and some header files.
 *
 */
-#ifndef DESERIALIZER_HPP
-#define DESERIALIZER_HPP
+#pragma once
 
 #include "Reader.hpp"
 #include "Enums.hpp"
@@ -89,5 +88,3 @@ public:
 	Prototype ReadPrototype(Reader& reader);
     std::pair<Header, Prototype> Parse();
 };
-
-#endif // !DESERIALIZER_HPP

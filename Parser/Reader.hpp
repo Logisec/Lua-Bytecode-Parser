@@ -6,8 +6,7 @@
 * Description: Handles definitions and header files for the reader class.
 *
 */
-#ifndef BINARY_READER_HEADER
-#define BINARY_READER_HEADER
+#pragma once
 
 #include <vector>
 #include <string>
@@ -35,4 +34,3 @@ public:
 	std::string ByteToHex(uint8_t byte);
 	std::string BytesToHex(const std::vector<uint8_t>& bytes);
 };
-#endif // !BINARY_READER_HEADER
