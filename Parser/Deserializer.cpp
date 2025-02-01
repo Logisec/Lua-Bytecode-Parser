@@ -48,25 +48,25 @@ Deserializer::Prototype Deserializer::ReadPrototype(Reader& reader) {
 	uint32_t instructionCount = reader.ReadInt32();
 	for (uint32_t i = 0; i < instructionCount; i++) {
 		uint32_t instruction = reader.ReadInt32();
-		uint32_t opcode = instruction % 0x40;
-		uint32_t reg_a = (instruction >> 6) % 0xFF;
+		uint32_t opcode = instruction & 0x3F;
+		uint32_t reg_a = (instruction >> 6) & 0xFF;
 
 		std::string mnemonic = InstructionSet[opcode].Mnemonic;
 		std::string type = InstructionSet[opcode].Type;
 		std::string description = InstructionSet[opcode].Description;
 
 		if (type == "iABC") {
-			uint32_t reg_b = (instruction >> 23) % 0x1FF;
-			uint32_t reg_c = (instruction >> 14) % 0x1FF;
+			uint32_t reg_b = (instruction >> 23) & 0x1FF;
+			uint32_t reg_c = (instruction >> 14) & 0x1FF;
 			proto.Instructions.push_back({ opcode, reg_a, reg_b, reg_c, mnemonic, description });
 		} 
 		else if (type == "iABx") {
-			uint32_t reg_bx = (instruction >> 14) % 0x3FFFF;
-			proto.Instructions.push_back({ opcode, reg_a, reg_bx, 0, mnemonic, description });
+			uint32_t reg_bx = (instruction >> 14) & 0x3FFFF;
+			proto.Instructions.push_back({ opcode, reg_a, reg_bx, -1, mnemonic, description });
 		} 
 		else if (type == "iAsBx") {
-			uint32_t sbx = ((instruction >> 14) & 0x3FFFF) - 131071;
-			proto.Instructions.push_back({ opcode, reg_a, sbx, 0, mnemonic, description });
+			uint32_t reg_sbx = ((instruction >> 14) & 0x3FFFF) - 131071;
+			proto.Instructions.push_back({ opcode, reg_a, reg_sbx, -1, mnemonic, description });
 		}
 	}
 

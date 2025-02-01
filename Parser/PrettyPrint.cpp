@@ -68,8 +68,8 @@ void PrintPrototype(const Deserializer::Prototype& proto, int level, const std::
     for (const auto& instr : proto.Instructions) {
         std::cout << indent << "    Opcode: " << instr.Opcode
             << ", A: " << instr.RegA
-            << ", B: " << instr.RegB
-            << ", C: " << instr.RegC
+            << ", B: " << std::visit([](auto&& arg) { return std::to_string(arg); }, instr.RegB)
+            << ", C: " << std::visit([](auto&& arg) { return std::to_string(arg); }, instr.RegC)
             << ", Mnemonic: " << instr.Mnemonic << std::endl;
     }
 

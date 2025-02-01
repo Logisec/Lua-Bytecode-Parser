@@ -47,8 +47,8 @@ public:
 	struct Instruction {
 		uint32_t Opcode;
 		uint32_t RegA;
-		uint32_t RegB;
-		uint32_t RegC;
+		std::variant<uint32_t, int32_t> RegB;
+        std::variant<uint32_t, int32_t> RegC;
 		std::string Mnemonic;
 		std::string Description;
 	};
