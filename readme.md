@@ -90,11 +90,9 @@ function main(...)
 end
 ```
 
-###### We output it in a lua like format. I got the idea from luac.nl.
-###### Anyways, I plan to release a more dynamic version which will handle each and every Lua version. :pray:
-###### See anything that could be improved on? Let me know! :smile:
-###### Contacts:
-- Discord: `.jeremiahj.`
+###### We output it in a lua like format. We got the idea from luac.nl.
+###### Anyways, we plan to release a more dynamic version which will handle each and every Lua version.
+###### See anything that could be improved on? Let us know! [Logisec Contact Us](https://logisec.net/contact)
 
 ###### Creds:
 - [Lua 5.1 Bytecode Reference](https://archive.org/details/a-no-frills-intro-to-lua-5.1-vm-instructions)
