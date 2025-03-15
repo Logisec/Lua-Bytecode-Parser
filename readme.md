@@ -1,5 +1,5 @@
 ## Lua Bytecode Parser
-###### This is a basic lua 5.1 bytecode parser written C++. I wrote this as a successor to my Lua 5.1 bytecode parser in Lua. I also just like C++ and want to do more with it.
+###### This is a basic lua 5.1 bytecode parser written C++.
 
 ##### Usage:
 ```
