@@ -27,6 +27,18 @@ int32_t Reader::ReadInt32() {
 	return bytes[0] | (bytes[1] << 8) | (bytes[2] << 16) | (bytes[3] << 24);
 }
 
+int64_t Reader::ReadInt64() {
+	auto bytes = ReadBytes(8);
+	return static_cast<int64_t>(bytes[0]) |
+		(static_cast<int64_t>(bytes[1]) << 8) |
+		(static_cast<int64_t>(bytes[2]) << 16) |
+		(static_cast<int64_t>(bytes[3]) << 24) |
+		(static_cast<int64_t>(bytes[4]) << 32) |
+		(static_cast<int64_t>(bytes[5]) << 40) |
+		(static_cast<int64_t>(bytes[6]) << 48) |
+		(static_cast<int64_t>(bytes[7]) << 56);
+}
+
 double Reader::ReadDouble() {
 	auto bytes = ReadBytes(8);
 	double value;
@@ -34,10 +46,10 @@ double Reader::ReadDouble() {
 	return value;
 }
 
-std::string Reader::ReadString() {
-	int32_t length = ReadInt32();
+std::string Reader::ReadString(size_t sizeParams) {
+	auto length = ReadInt();
 	if (length <= 0) return "";
-	auto bytes = ReadBytes(length);
+	auto bytes = ReadBytes(static_cast<size_t>(length));
 	if (bytes.back() == 0) bytes.pop_back();
 	return std::string(bytes.begin(), bytes.end());
 }
